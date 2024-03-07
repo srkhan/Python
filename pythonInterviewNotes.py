@@ -7,6 +7,8 @@ print(hello)
 # Multiple assignments
 n, m = 0, "abc"
 n, m, z = 0.125, "abc", False
+print("n =", n)
+print("z =", z)
 
 # Increment 
 n = n + 1 # good
@@ -29,7 +31,7 @@ else:
     n += 2
 
 # Parenthesis needed for multiline conditionals
-# and = && 
+# and = && s
 # or = ||
 n, m = 1, 2
 if ((n > 2 and
