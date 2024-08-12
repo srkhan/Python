@@ -52,7 +52,7 @@ for i in range(2, 6):
 for i in range(5, 1, -1):
     print(i)    
 
-#Divison is decimal by default
+#Divison is decimal by default in python
 print(5/2)
 
 #Double slash rounds down
@@ -60,9 +60,39 @@ print(5//2)
 
 #CAREFUL: most languages round towards 0 by
 # default so negative numbers will round down
-#adding new commits
-#second commit
-#3rd commit
-#4th commit
-#5th commit 
 print(-3 // 2)
+ 
+# a workaround for rounding towards zero is to
+#use decimal divison and then convert to int.
+print (int(-3/2))
+
+#modding similar to most languages
+print (10%3)
+
+#except for negative values
+print (-10%3)
+
+#to be consistent with other languages modulo
+import math
+print(math.fmod(-10,3))
+
+#more math helpers
+print(math.floor(3/2))
+print(math.ceil(3/2))
+print(math.sqrt(2))
+print(math.pow(2,3))
+
+#max / min int
+float ("inf")
+float ("-inf")
+
+#python numbers are infinite so they never overflow
+print(math.pow(2, 200))
+
+#but still less than infinity
+print(math.pow(2, 200) < float("inf"))
+
+#arrays (called lists in python)
+arr = [1, 2, 3]
+print(arr)
+
