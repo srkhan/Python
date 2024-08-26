@@ -135,9 +135,205 @@ print(arr[-2])
 # Sublists (aka slicing an array)
 
 arr = [1, 2, 3, 4]
+# doesnt include last index
 print(arr[1:3])
 
 # Similar to for-loop ranges, last index is non-inclusive
 print(arr[0:4])
 
 # Unpacking
+a, b, c = [1, 2, 3]
+print(a, b, c)
+
+# becareful vars on the left side match # of elements in array 
+#a, b = [2, 4, 5]
+
+# loop through arrays
+nums = [1, 2, 3]
+
+# using index
+for i in range(len(nums)):
+    print(nums[i])
+
+# without index
+for n in nums:
+    print(n)
+
+# with index and value
+for i, n in enumerate(nums):
+    print(i, n)
+
+# Loop through multiple arrays simultaneously
+# with unpacking
+nums1 = [1, 3, 5]
+nums2 = [2, 4, 6]
+for n1, n2 in zip(nums1, nums2):
+    print(n1, n2)
+
+# Reverse
+nums = [1, 2, 3]
+nums.reverse()
+print(nums)
+
+# Sorting, sorts in ascending order by default
+arr = [5, 4, 7, 3, 8]
+arr.sort()
+print(arr)
+
+arr.sort(reverse=True)
+print(arr)
+
+# sort is done by alphabetical order on a list of strings
+arr = ["bob", "alice", "jane", "doe"]
+arr.sort()
+print(arr)
+
+# Custom sort (by length of string)
+# key is equal to lambda (function w/o name)
+# take every single value from arr, call it x
+# return the length of x, and use that as the key to
+# use to sort the arr
+arr.sort(key=lambda x: len(x))
+print(arr)
+
+# List comprehension
+arr = [i for i in range(5)]
+print(arr)
+
+arr = [i+i for i in range(5)]
+print(arr)
+
+# 2-D lists
+arr = [[0] * 4 for i in range(4)]
+print(arr)
+
+# This won't work, each of the 4 rows of the arry will be the same, modifying one row will modify all rows
+arr = [[0]* 4] * 4
+print(arr)
+
+# Strings are similar to arrays
+s = "abc"
+print(s[0:2])
+
+# But they are immutable, cant reassign the character at index 0
+#s[0] = "A"
+
+# So this cerates a new string, addingd def to the end of the string
+# creates a new string, modifying a string is considered n time operation
+s += "def"
+print(s)
+
+# Valid numeric strings can be converted
+# strings can be converted to integers and the integers can be added
+print(int("123") + int("123"))
+
+# And numbers can be converted to strings
+print(str(123) + str(123))
+
+# In rare cases you may need the ASCII value of a char
+print(ord("a"))
+print(ord("b"))
+
+# Combine a list of strings (with an empty string delimitor)
+strings = ["ab", "cd", "ef"]
+print("".join(strings))
+
+#Queues (double ended queue)
+from collections import deque
+
+queue = deque()
+queue.append(1)
+queue.append(2)
+print(queue)
+
+# popleft operation is constant time unlike stacks
+queue.popleft()
+print(queue)
+
+queue.appendleft(1)
+print(queue)
+
+queue.pop()
+print(queue)
+
+# HashSet
+mySet = set()
+
+mySet.add(1)
+mySet.add(2)
+print(mySet)
+print(len(mySet))
+
+print(1 in mySet)
+print(2 in mySet)
+print(3 in mySet)
+
+mySet.remove(2)
+print(2 in mySet)
+
+# list to set
+print(set([1, 2, 3]))
+
+# Set comprehension
+mySet = { i for i in range(5)}
+print(mySet)
+
+# HashMap (aka dict (dictionaries))
+myMap = {}
+myMap["alice"] = 88
+myMap["bob"] = 77
+print(myMap)
+print(len(myMap))
+
+# modify value that is mapped to a key
+myMap["alice"] = 80
+print(myMap["alice"])
+
+# search if a key exists in a hashmap at constant time
+print("alice" in myMap)
+myMap.pop("alice")
+print("alice" in myMap)
+
+# initalize hashmap
+myMap = { "alice": 90, "bob": 70 }
+print(myMap)
+
+# Dict comprehension
+myMap = { i: 2*i for i in range(3)}
+print(myMap)
+
+# Looping through maps
+myMap = { "alice": 90, "bob": 70 }
+for key in myMap:
+    print(key, myMap[key])
+
+# directly iterate through the values of hashmap if no key is needed 
+for val in myMap.values():
+    print(val)
+
+# using unpacking, go through items of the map, that will give us keys and values
+for key, val in myMap.items():
+    print(key, val)
+
+# Tuples are like arrrays but immutable
+tup = (1, 2, 3)
+print(tup)
+print(tup[0])
+print(tup[-1])
+
+# Can't modify
+#tup[0] = 0
+
+# Can be used as key for has map/set
+myMap = { (1,2): 3 }
+print(myMap[(1,2)])
+
+mySet = set()
+mySet.add((1, 2))
+print((1, 2) in mySet)
+
+# Lists can't be keys
+# myMap[[3,4]] = 5
+
+# Heaps
+import heapq
