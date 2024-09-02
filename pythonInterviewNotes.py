@@ -410,7 +410,7 @@ val = 6
 double(nums, val)
 
 # Class
-class MyClass:
+class MyClass: 
     # Constructor
     def __init__(self, nums): 
         # Create member variables
@@ -423,9 +423,11 @@ class MyClass:
     
     def getDoubleLength(self):
         return 2 * self.getLength()
+
 nums = [1, 2, 3, 4]
+my_instance = MyClass(nums)
 # TODO figure out why Line 428 gives "AttributeError: 'list' object has no attribute 'size'" error
-#print(MyClass.getLength(nums))
+print(my_instance.getLength())
 
 
 
