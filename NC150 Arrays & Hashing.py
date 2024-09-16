@@ -57,3 +57,38 @@ class Solution:
             if diff in prevMap:
                 return [prevMap[diff], i]
             prevMap[nums[i]] = i
+
+    # Problem link: https://leetcode.com/problems/valid-palindrome/        
+    def isPalindrome(self, s: str) -> bool:
+        # 1st approach, create new str, filter out non alphanumeric characters, add alphanumeric lowercase chars and check if its equal
+        # to reverse of the string, uses extra memory for new str and reverse of it and built in python functions like isalnum and isdigit
+        # Time: O(n) Space: O(n)
+        newStr = ""
+
+        for c in s:
+            if c.isalnum() or c.isdigit():
+                newStr += c.lower()
+        return (newStr == newStr[::-1])
+    
+        # 2nd approach, using pointers check if L (leftmost alphanumeric char in str s) and R (rightmost alphanumeric char in str s) are equal. If not return (NOT a palindrome)
+        # if so increment L and decrement R until they meet in the middle char (str is odd) or L and R passes each other and return (IS a palindrome). 
+        # To determine if a char is alphanumeric we can use ascii values and skip non alphanumeric chars in string s
+        # Time: O(n) Space: O(1) no extra space needed for this soln
+        L, R = 0, len(s) -1
+
+        while L < R:
+            while L < R and not self.alphaNum(s[L]):
+                L += 1
+            while R > L and not self.alphaNum(s[R]):
+                R -= 1
+            if s[L].lower() != s[R].lower():
+                return False
+            L = L + 1
+            R = R - 1
+        return True
+    
+        # func will return true or false if it is alphanumeric or not
+        def alphaNum(self, c):
+            return (ord('A') <= ord(c) <= ord('Z') or
+            ord('a') <= ord(c) <= ord('z') or
+            ord('0') <= ord(c) <= ord('9')) 
