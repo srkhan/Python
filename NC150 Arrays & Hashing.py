@@ -27,6 +27,7 @@ class Solution:
         # 1st approach, check if strings are same length, use hashamap to keep track of # of occurances of every character 
         # in each string, then go thru keys and check counts are the same
         # Time: O(s+t) or O(n) Space: O(s+t) or O(n)
+        # TODO review this again
         if len(s) != len(t):
             return False
         countS, countT = {}, {}
@@ -60,7 +61,7 @@ class Solution:
 
     # Problem link: https://leetcode.com/problems/valid-palindrome/        
     def isPalindrome(self, s: str) -> bool:
-        # 1st approach, create new str, filter out non alphanumeric characters, add alphanumeric lowercase chars and check if its equal
+        # 1st approach, create new str, filter out non alphanumeric characters, add alphanumeric lowercase chars to str and check if its equal
         # to reverse of the string, uses extra memory for new str and reverse of it and built in python functions like isalnum and isdigit
         # Time: O(n) Space: O(n)
         newStr = ""
@@ -77,6 +78,7 @@ class Solution:
         L, R = 0, len(s) -1
 
         while L < R:
+            #these loops are done to skip over nonalphanuemric chars
             while L < R and not self.alphaNum(s[L]):
                 L += 1
             while R > L and not self.alphaNum(s[R]):
@@ -86,9 +88,10 @@ class Solution:
             L = L + 1
             R = R - 1
         return True
-    
+
         # func will return true or false if it is alphanumeric or not
         def alphaNum(self, c):
             return (ord('A') <= ord(c) <= ord('Z') or
             ord('a') <= ord(c) <= ord('z') or
-            ord('0') <= ord(c) <= ord('9')) 
+            ord('0') <= ord(c) <= ord('9'))     
+        
