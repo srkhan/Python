@@ -95,3 +95,31 @@ class Solution:
             ord('a') <= ord(c) <= ord('z') or
             ord('0') <= ord(c) <= ord('9'))     
         
+    # Probelm link: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+    def maxProfit(self, prices: List[int]) -> int:
+        # Approach: sliding window problem, first set lowest price to be 1st elem in arr and initalize profit to be zero, 
+        # then check if arr[i] is less than lowest price, if so make lowest price = arr[i]. Then take the maximum of profit and arr[i] - lowest price and set it to profit
+        # After finishing iteration of arr maximum profit will be in profit var
+        # Time: O(n) Space: O(1), no space used just iterating thru prices list once to find max profit
+        profit = 0
+        lowest = prices[0]
+        for price in prices:
+            if price < lowest:
+                lowest = price
+            profit = max(profit, price - lowest)
+        return profit
+        # soln 2 slightly different, have left(buy) and right(sell) pointer, initialize r to be next element after l, loop through prices and check if left(buy) is 
+        # less than right(sell) if so find profit (arr[r] - arr[l]) and then check the maximum between max profit and profit and set highest # to max P
+        # if left pointer (buy) is not less than right pointer (sell), make right pointer(sell) the new left pointer(buy), and afterwards iterate thru while loop
+        # After finishing iteration of prices array maximum profit will be in maxP var
+        # Time: O(n) Space: O(1), no space used just iterating thru prices list once to find max profit
+        l, r = 0, 1
+        maxP = 0
+        while r < len(prices):
+            if prices[l] < prices[r]:
+                profit = prices[r] - prices[l]
+                maxP = max(maxP, profit)
+            else:
+                l = r
+            r+= 1
+        return maxP
