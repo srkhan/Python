@@ -248,7 +248,7 @@ print(queue)
 
 # popleft operation is constant time unlike stacks
 queue.popleft()
-print(queue)
+print("after popleft ", queue)
 
 queue.appendleft(1)
 print(queue)
@@ -282,7 +282,7 @@ print(mySet)
 myMap = {}
 myMap["alice"] = 88
 myMap["bob"] = 77
-print(myMap)
+print("dictonary/hashmap", myMap)
 print(len(myMap))
 
 # modify value that is mapped to a key
